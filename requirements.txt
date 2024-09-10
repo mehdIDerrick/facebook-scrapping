@@ -1,0 +1,5 @@
+pandas
+selenium
+selenium
+selenium
+webdriver-manager

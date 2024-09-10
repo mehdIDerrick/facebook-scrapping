@@ -1,4 +1,8 @@
 from flask import Flask, jsonify, render_template, request,send_file
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 import os
 import hashlib
@@ -45,7 +49,9 @@ def scroll_and_click(driver, element, retries=3):
     return False
 
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+chrome_options.add_argument('--headless')  # Ensure headless mode
+chrome_options.add_argument('--no-sandbox')  # Bypass OS security model, required in cloud environments
+chrome_options.add_argument('--disable-dev-shm-usage')
 
 chrome_options.add_argument("--window-size=2560,1440")
 chrome_options.add_argument("--disable-gpu")
@@ -56,7 +62,6 @@ chrome_options.add_argument("--proxy-server='direct://'")
 chrome_options.add_argument("--proxy-bypass-list=*")
 chrome_options.add_argument("--start-maximized")
 chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--start-maximized")
 
 

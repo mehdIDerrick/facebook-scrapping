@@ -64,9 +64,10 @@ chrome_options.add_argument("--start-maximized")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--start-maximized")
 
-driver.set_page_load_timeout(60)
+
 service = Service(ChromeDriverManager().install(), port=0)  # Let OS pick an open port
 driver = webdriver.Chrome(service=service, options=chrome_options)
+driver.set_page_load_timeout(60)
 # Initialize WebDriver
 #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 # Initialize WebDriver
